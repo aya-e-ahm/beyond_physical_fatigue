@@ -1,0 +1,100 @@
+[
+  {
+    "folder": "sofyan_amrabat_3820",
+    "player": "Sofyan Amrabat",
+    "match": "3820",
+    "position": "CM",
+    "label": "3820 MAR-CRO"
+  },
+  {
+    "folder": "sofyan_amrabat_10516",
+    "player": "Sofyan Amrabat",
+    "match": "10516",
+    "position": "CM",
+    "label": "10516 CRO-MAR"
+  },
+  {
+    "folder": "achraf_hakimi_3820",
+    "player": "Achraf Hakimi",
+    "match": "3820",
+    "position": "RB",
+    "label": "3820 MAR-CRO"
+  },
+  {
+    "folder": "achraf_hakimi_10516",
+    "player": "Achraf Hakimi",
+    "match": "10516",
+    "position": "RB",
+    "label": "10516 CRO-MAR"
+  },
+  {
+    "folder": "luka_modric_3820",
+    "player": "Luka Modric",
+    "match": "3820",
+    "position": "CM",
+    "label": "3820 MAR-CRO"
+  },
+  {
+    "folder": "luka_modric_10516",
+    "player": "Luka Modric",
+    "match": "10516",
+    "position": "CM",
+    "label": "10516 CRO-MAR"
+  },
+  {
+    "folder": "luka_modric_10506",
+    "player": "Luka Modric",
+    "match": "10506",
+    "position": "CM",
+    "label": "10506 JPN-CRO"
+  },
+  {
+    "folder": "ivan_perisic_3820",
+    "player": "Ivan Perisic",
+    "match": "3820",
+    "position": "LW",
+    "label": "3820 MAR-CRO"
+  },
+  {
+    "folder": "ivan_perisic_10516",
+    "player": "Ivan Perisic",
+    "match": "10516",
+    "position": "LB",
+    "label": "10516 CRO-MAR"
+  },
+  {
+    "folder": "josko_gvardiol_3820",
+    "player": "Josko Gvardiol",
+    "match": "3820",
+    "position": "LCB",
+    "label": "3820 MAR-CRO"
+  },
+  {
+    "folder": "josko_gvardiol_10516",
+    "player": "Josko Gvardiol",
+    "match": "10516",
+    "position": "LCB",
+    "label": "10516 CRO-MAR"
+  },
+  {
+    "folder": "marcos_acuna_3835",
+    "player": "Marcos Acu\u00f1a",
+    "match": "3835",
+    "position": "LB",
+    "label": "3835 ARG-MEX"
+  },
+  {
+    "folder": "hidemasa_morita_3854",
+    "player": "Hidemasa Morita",
+    "match": "3854",
+    "position": "CM",
+    "label": "3854 JPN-ESP"
+  },
+  {
+    "folder": "yunus_musah_3815",
+    "player": "Yunus Musah",
+    "match": "3815",
+    "position": "CM",
+    "label": "3815 USA-WAL"
+  }
+]

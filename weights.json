@@ -1,0 +1,27 @@
+{
+  "normalization": {
+    "nearest_clip_m": 350.0,
+    "ols_clip_deg": 42.5,
+    "speed_phi": "phi_roll10 unchanged (already 0-1)",
+    "pass_C": "already 0-1 composite success/xG window",
+    "standing": "1 - worst_vulnerability_5min_norm",
+    "tight_w3": "already 0-1 PC synergy tight +/-80 / +/-1450, 3-min window"
+  },
+  "series_weights": {
+    "tight_w3": 1.0,
+    "pass_C": 1.0,
+    "standing": 1.5,
+    "ols_distance": 1.0,
+    "tm_cum": 1.0,
+    "op_cum": 1.0,
+    "speed_phi": 1.0
+  },
+  "group_weights": {
+    "cognitive": 1.0,
+    "kinematic": 1.0
+  },
+  "groups": {
+    "cognitive": ["tight_w3", "pass_C", "standing"],
+    "kinematic": ["ols_distance", "tm_cum", "op_cum", "speed_phi"]
+  }
+}

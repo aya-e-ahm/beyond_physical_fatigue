@@ -1,0 +1,85 @@
+RSP raw roll-10 Φ — method notes
+================================
+
+Purpose
+-------
+Recompute the position-dependent speed residual (RSP) for selected players using
+RAW tracking (`homePlayers` / `awayPlayers`), so player speeds match the same
+track source as the tournament position profiles.
+
+Why this folder exists
+----------------------
+An earlier timeline-suite / new_players path pulled positions from
+`possession_cache/..._kin.parquet`, which comes from `extract_focal_tracking`
+with `prefer_smoothed_player=True` (`homePlayersSmoothed`). Those smoothed
+tracks yield lower stride-12 speeds. The global profiles in
+`kinematic_profiles/wc_position_profiles.csv` were built with
+`wc_position_profiles._stream_match`, which reads RAW `homePlayers` /
+`awayPlayers` only. Mixing smoothed players against a raw profile pulled φ
+below 0.5 even when the old raw-vs-raw RSP (e.g. WhatsApp Gvardiol late) was
+above 0.5 in P1.
+
+This batch is raw player vs raw profile — same pairing as the original
+`run_batch_rsp.py` / `RSP/` figures.
+
+Players / matches
+-----------------
+- Core five × 2: Amrabat, Hakimi, Modrić, Perišić, Gvardiol on 3820 (early
+  MAR–CRO) and 10516 (late CRO–MAR).
+- Modrić mid 10506 JPN–CRO (sub at 99:00).
+- Acuña 3835 ARG–MEX, Musah 3815 USA–WAL, Morita 3854 JPN–ESP.
+Smoke test: Gvardiol late 10516 only (`--smoke`).
+
+Track source (player)
+---------------------
+- Stream match JSONL via `wc_position_profiles._stream_match`.
+- Positions: RAW `homePlayers` / `awayPlayers` (never `*PlayersSmoothed`).
+- Kinematics: `match_player_analysis.add_stride_kinematics`
+  (central difference, STRIDE = 12 frames) then `add_step_distance`.
+- Minute table: `wc_position_profiles._player_minute_values`
+  (mean speed / |a| / distance / |jerk| per regulation minute 1–90, with the
+  usual coverage gate).
+
+Reference (profile)
+-------------------
+- File: `kinematic_profiles/wc_position_profiles.csv`
+- Level: detailed; group = roster `positionGroupType` for that match
+  (e.g. LCB, CM, RB).
+- That CSV was accumulated with the same raw `_stream_match` path.
+
+Score formula (speed; same as original RSP / timeline §4)
+---------------------------------------------------------
+For regulation minutes in each half separately:
+
+1. LOWESS smooth the player's minute speed (`frac=0.5`, `it=0`) → player_fit
+2. LOWESS smooth the profile mean series the same way → ref_fit
+3. Instantaneous residual (m/s):
+     resid = player_fit − ref_fit
+   (We do NOT divide the LOWESS means by sd.)
+4. Standardize with the profile per-minute sd:
+     z = resid / sd
+5. Trailing roll-10 mean of z inside the half (window restarts at half-time):
+     roll10_z
+6. Normalize for plotting:
+     phi_roll10 = Φ(roll10_z)   # standard normal CDF
+   Horizontal 0.5 = on trend; dotted lines ≈ Φ(±1).
+
+Also stored: half-long Φ(mean-so-far of z) as phi_5a (companion diagnostic).
+
+Outputs per job
+---------------
+- `{slug}_{match}_rsp_minutes.csv` — raw minute metrics
+- `{slug}_{match}_speed_residual_roll10.csv` — minute, residual, z, roll10_z,
+  phi_roll10, phi_5a, position, match_id
+- `{slug}_{match}_speed_roll10.png` — full-match Φ(rolling z), w=10
+  (timeline-suite style)
+- `{slug}_{match}_speed_residual_roll10.png` — P1|P2 panels: roll-10 residual
+  (top) and Φ (bottom)
+- `NOTES.txt` — this file
+- `smoke_summary.txt` — written by `--smoke`
+
+Reproduce
+---------
+  python cognitive_metrics/main_figures_nb_outputs/rsp_raw_roll10/run_rsp_raw_roll10.py --smoke
+  python cognitive_metrics/main_figures_nb_outputs/rsp_raw_roll10/run_rsp_raw_roll10.py
+  python .../run_rsp_raw_roll10.py --job gvardiol_10516

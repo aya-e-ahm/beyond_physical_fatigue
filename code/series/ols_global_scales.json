@@ -1,0 +1,29 @@
+{
+  "s_x": 200.0,
+  "s_y": {
+    "distance_m": 42.0,
+    "peak_speed": 7.0
+  },
+  "setting": {
+    "n_window": 6,
+    "min_n": 4,
+    "min_x_s": 20.0
+  },
+  "source": "90th percentile over 585 usable sprints, 5 players x 3820 + 10516",
+  "players": [
+    "Amrabat",
+    "Modric",
+    "Gvardiol",
+    "Hakimi",
+    "Perisic"
+  ],
+  "matches": [
+    "3820",
+    "10516"
+  ],
+  "chosen": {
+    "s_x": 200.0,
+    "s_y_distance_m": 42.0,
+    "s_y_peak_speed": 7.0
+  }
+}
