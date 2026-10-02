@@ -18,10 +18,6 @@ This folder rebuilds the **final 0–1 cognitive and kinematic (fatigue) curves*
 
 Within each group (cognitive and kinematic separately), each series weight is divided by the sum of the weights of all contributing series in that group.
 
-Mixer remap for LWRD: clip cumulative residual `C` at ±350 m, then `N = (C + 350) / 700`.
-OLS: recover θ from `roll_A`, clip ±42.5°, `N = (θ + 42.5) / 85`.
-Standing benefit: `1 − worst_vulnerability_5min_norm`.
-
 ## Layout
 
 ```
@@ -62,10 +58,6 @@ All rebuild scripts resolve roots through `code/paths.py` (no machine-local abso
   - fallback: the parent of this package
 
 Match JSONL / caches are **not** bundled. Tracking-level rebuilds need that workspace beside (or pointed at by) this package.
-
-## Synergy note
-
-Pitch-control synergy is **not** recomputed here. Saved `01f_…timewin.csv` is the input. Standing `V_actual` / vulnerability values come from the enriched case-study CSV; this package remaps / filters them.
 
 ## Run mixer
 
