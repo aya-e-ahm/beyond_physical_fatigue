@@ -2,7 +2,7 @@
 
 Code and data associated with the abstract submission to the MIT Sloan Sports Analytics Conference.
 
-This folder rebuilds the **final 0–1 cognitive and kinematic (fatigue) curves**, and includes the tracking preprocessing kernels used to form the intermediates (except pitch-control synergy, which is taken as a saved input).
+This folder rebuilds the **final 0–1 cognitive and kinematic (fatigue) curves**, and includes the tracking preprocessing kernels used to form the intermediates.
 
 ## Active series (7)
 
